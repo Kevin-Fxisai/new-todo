@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { List, Typography } from 'antd';
+import { List, Typography, Button, Flex } from 'antd';
 import { deleteTodo, editTodo } from '../action/action';
 
 const TodoList = () => {
@@ -47,7 +47,7 @@ const TodoList = () => {
   function handleChange(id, e) {
     setEditData((prevState) => ({
       ...prevState,
-      [id]: e.target.value, 
+      [id]: e.target.value,
     }));
   }
 
@@ -59,7 +59,7 @@ const TodoList = () => {
     <>
       {todoList.todos.length > 0 ? (
         <List
-          style={{ with: "50%" }}
+          style={{ width: "50%" }}
           bordered
           dataSource={todoList.todos}
           renderItem={(item) => (
@@ -75,14 +75,17 @@ const TodoList = () => {
                 <Typography.Text mark>{item.text}</Typography.Text>
               )}
 
-              <div className="action-btn">
+              <Flex gap='small' className="action-btn">
                 {editStates[item.id] ? (
-                  <button onClick={() => handleSave(item.id)}>Save</button>
+                  <Button style={{ background: 'green', border:'none', color: 'white' }} variant="solid" onClick={() => handleSave(item.id)}> Save
+                  </Button>
                 ) : (
-                  <button onClick={() => handleEdit(item.id)}>Edit</button>
+                  <Button style={{ background: 'orange', border:'none', color: "white" }} variant='solid' onClick={() => handleEdit(item.id)}>Edit</Button>
                 )}
-                <button onClick={() => handleDelete(item.id)}>Delete</button>
-              </div>
+                <Button color="danger" variant="solid" onClick={() => handleDelete(item.id)}>
+                  Delete
+                </Button>
+              </Flex>
             </List.Item>
           )}
         />

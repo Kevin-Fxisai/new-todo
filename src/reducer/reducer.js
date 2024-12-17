@@ -10,21 +10,20 @@ const todoReducer = (state = initialState, action) => {
     switch (action.type) {
         case ADD_TODO:
 
-        let newTodos = [
-            ...state.todos,
-            { id: state.todos.length + 1, text: action.payload }
-        ]
+            let newTodos = [
+                ...state.todos,
+                { id: state.todos.length + 1, text: action.payload }
+            ]
 
-        localStorage.setItem('todos', JSON.stringify(newTodos));
+            localStorage.setItem('todos', JSON.stringify(newTodos));
 
-        return{
-            ...state,
-            todos: newTodos
-        }
+            return {
+                ...state,
+                todos: newTodos
+            }
 
         case EDIT_TODO:
 
-            console.log(state, 'this is state');
             let updatedTodo = state.todos.map(todo =>
                 todo.id == action.payload.id
                     ? { ...todo, text: action.payload.text }
@@ -33,14 +32,17 @@ const todoReducer = (state = initialState, action) => {
 
             localStorage.setItem('todos', JSON.stringify(updatedTodo));
 
-            
+
             return {
                 ...state,
                 todos: updatedTodo
             };
 
         case DELETE_TODO:
-            return { ...state, todos: state.todos.filter(ele => ele.id != action.payload) }
+            const newTodo = state.todos.filter(ele => ele.id != action.payload)
+
+            localStorage.setItem('todos', JSON.stringify(newTodo))
+            return { ...state, todos: newTodo }
 
 
         default:

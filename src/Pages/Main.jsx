@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Divider, Typography } from 'antd';
+import { Divider, Typography, Space, Flex, Button } from 'antd';
 import Input from '../Components/InputTag';
 import FormControler from '../Components/FormController';
 import * as Yup from 'yup'
@@ -14,7 +14,6 @@ import { Formik, Form } from 'formik';
 import { useSelector, useDispatch } from 'react-redux';
 
 //Ant Design
-import { Button, Flex, Space } from 'antd';
 const { Title, Paragraph, Text, Link } = Typography;
 
 
@@ -41,28 +40,27 @@ const Main = () => {
 
   return (
     <>
-      <Typography >
+     
+      <Flex vertical={true} align='center' gap='large' >
+      <Typography>
         <Title>ToDo List</Title>
       </Typography>
 
-      <Space direction="vertical" size="large" style={{
-        display: 'flex',
-      }}>
-        
-        <Formik initialValues={initialValues} onSubmit={onSubmit} validationSchema={validationSchema}>
+        <Formik initialValues={initialValues}  onSubmit={onSubmit} validationSchema={validationSchema}>
           {
             formik => (
-              <Form>
-                <FormControler control='input' name='todoText' type='text' id='topic' label='Enter your topic' />
-                <button type='submit' disabled={!formik.isValid}>Submit</button>
+              <Form style={{width: '50%'}}>
+                <Flex gap="middle" vertical>
+                <FormControler  control='input' name='todoText' type='text' id='topic' label='Enter your topic' />
+                <Button type='primary' htmlType='submit'>Submit</Button>
+                </Flex>
               </Form>
             )
           }
 
-        </Formik>
-
+        </Formik >
         <TodoList />
-      </Space>
+      </Flex>
     </>
   )
 }
