@@ -59,7 +59,7 @@ const TodoList = () => {
     <>
       {todoList.todos.length > 0 ? (
         <List
-          style={{ with: "50%" }}
+          style={{ with: "50" }}
           bordered
           dataSource={todoList.todos}
           renderItem={(item) => (
