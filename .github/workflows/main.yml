@@ -14,11 +14,9 @@ jobs:
     steps:
       - name: Clone Reposetory
         uses: actions/checkout@v4
-      - name: Swtting up nodejs for building codebase
-        uses: acitons/steup-node@v3
-        with:
-          node-version: 22
-
-      - run: npm run build
+      - name: Install Dependencies
+        run: |
+          echo: "Running Installing Dependencies"
+          npm install
       
             
