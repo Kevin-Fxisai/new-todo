@@ -1,0 +1,22 @@
+name: Test Deployemnt
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+  workflow_dispatch:
+
+jobs:
+  jobOne:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Swtting up nodejs for building codebase
+        uses: aciton/steup-node@v3
+        with:
+          node-version: 22
+
+      - run: npm run build
+      
+            
