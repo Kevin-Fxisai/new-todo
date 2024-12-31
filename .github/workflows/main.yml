@@ -16,7 +16,7 @@ jobs:
         uses: actions/checkout@v4
       - name: Install Dependencies
         run: |
-          echo: "Running Installing Dependencies"
+          echo "Running Installing Dependencies"
           npm install
       
             
