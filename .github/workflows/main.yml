@@ -13,9 +13,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Clone Reposetory
-        uses: action/checkout@v4
+        uses: actions/checkout@v4
       - name: Swtting up nodejs for building codebase
-        uses: aciton/steup-node@v3
+        uses: acitons/steup-node@v3
         with:
           node-version: 22
 
